@@ -101,4 +101,56 @@ function module:NewToggle(name, callback)
 	end)
 end
 
+function module:NewLabelTextBox(string, defaultValue, callback)
+	local NewValue = Instance.new("Frame", ScrollingFrame)
+	local Value = Instance.new("TextLabel")
+	local TextBox = Instance.new("TextBox")
+	local UICorner = Instance.new("UICorner")
+	
+	NewValue.Name = "NewValue"
+	NewValue.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	NewValue.BackgroundTransparency = 1.000
+	NewValue.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	NewValue.BorderSizePixel = 0
+	NewValue.Position = UDim2.new(0.431972802, 0, 0.137055844, 0)
+	NewValue.Size = UDim2.new(0, 100, 0, 27)
+	
+	Value.Name = "Value"
+	Value.Parent = NewValue
+	Value.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Value.BackgroundTransparency = 1.000
+	Value.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Value.BorderSizePixel = 0
+	Value.Position = UDim2.new(-1.34707463, 0, 0.600388825, 0)
+	Value.Size = UDim2.new(0, 133, 0, 27)
+	Value.Font = Enum.Font.SourceSansBold
+	Value.Text = tostring(string) or "label"
+	Value.TextColor3 = Color3.fromRGB(255, 255, 255)
+	Value.TextSize = 17.000
+	Value.TextWrapped = true
+	
+	TextBox.Parent = Value
+	TextBox.BackgroundColor3 = Color3.fromRGB(8, 8, 8)
+	TextBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	TextBox.BorderSizePixel = 0
+	TextBox.Position = UDim2.new(0.836146295, 0, 0.188889116, 0)
+	TextBox.Size = UDim2.new(0, 148, 0, 21)
+	TextBox.Font = Enum.Font.SourceSansBold
+	TextBox.PlaceholderText = tostring(defaultValue)
+	TextBox.Text = ""
+	TextBox.TextColor3 = Color3.fromRGB(218, 218, 218)
+	TextBox.TextScaled = true
+	TextBox.TextSize = 14.000
+	TextBox.TextWrapped = true
+	
+	UICorner.CornerRadius = UDim.new(0, 10)
+	UICorner.Parent = TextBox
+
+	TextBox:GetPropertyChangedSignal("Text"):Connect(function()
+		callback(tonumber(TextBox.Text) or 0)
+	end)
+	
+	callback(tonumber(TextBox.Text) or 0)
+end
+
 return module
