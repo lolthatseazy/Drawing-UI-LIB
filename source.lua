@@ -965,7 +965,7 @@ library.new = function(info)
 	border9.Position = udim2.pnew(0,0,1,0,border8)
 	--
 	local label = instance.new("TextLabel")
-	task.spawn(function() while task.wait(0.5) do label.Text = info.name end end)
+	task.spawn(function() while task.wait(2) do label.Text = info.name end end)
 	label.Size = 12
 	label.Position = udim2.pnew(0,5,0.5,-(label.TextBounds.Y/2),topbar)
 	local borders = {
@@ -1153,7 +1153,7 @@ library.newtoggle = function(info)
 	border3.Position = udim2.pnew(0,-1,0,-1,buttonframe)
 	--
 	local label = instance.new("TextLabel")
-	task.spawn(function() while task.wait(0.5) do label.Text = info.name end end)
+	task.spawn(function() while task.wait(2) do label.Text = info.name end end)
 	label.Size = 12
 	label.Visible = false
 	label.Position = udim2.pnew(1,7,0.5,-(label.TextBounds.Y/2)-1,buttonframe)
@@ -1212,7 +1212,7 @@ library.newslider = function(info)
 	border3.Position = udim2.pnew(0,-1,0,-1,buttonframe)
 	--
 	local label = instance.new("TextLabel")
-	task.spawn(function() while task.wait(0.5) do label.Text = info.name end end)
+	task.spawn(function() while task.wait(2) do label.Text = info.name end end)
 	label.Size = 12
 	label.Center = false
 	label.Visible = false
