@@ -1102,7 +1102,7 @@ library.newbutton = function(info)
 	border3.Position = udim2.pnew(0,-1,0,-1,buttonframe)
 	--
 	local label = instance.new("TextLabel")
-	label.Text = info.name
+	task.spawn(function() while task.wait(0.4) do label.Text = info.name end end)
 	label.Size = 12
 	label.Center = true
 	label.Visible = false
