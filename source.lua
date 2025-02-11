@@ -965,7 +965,7 @@ library.new = function(info)
 	border9.Position = udim2.pnew(0,0,1,0,border8)
 	--
 	local label = instance.new("TextLabel")
-	label.Text = info.name
+	task.spawn(function() while task.wait(0.5) do label.Text = info.name end end)
 	label.Size = 12
 	label.Position = udim2.pnew(0,5,0.5,-(label.TextBounds.Y/2),topbar)
 	local borders = {
