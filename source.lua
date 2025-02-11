@@ -1008,7 +1008,7 @@ library.newtab = function(info)
 	text.Position = udim2.pnew(0.5,0,0.5,-(textboundsy/2),tabbutton)
 	--
 	local tab = instance.new("Frame")
-	tab.Size = udim2.snew(7,0,1,-43,main[1].frame)
+	tab.Size = udim2.snew(1,0,1,-43,main[1].frame)
 	tab.Position = udim2.pnew(0,0,0,43,main[1].frame)
 	tab.Color = Color3.fromRGB(30, 30, 30)
 	--
