@@ -1,5 +1,6 @@
 local CoreGui = cloneref(game:GetService("CoreGui"))
 local TweenService = cloneref(game:GetService("TweenService"))
+local userInput = cloneref(game:GetService("UserInputService"))
 
 local module = {}
 
@@ -28,6 +29,38 @@ UIListLayout.Parent = ScrollingFrame
 UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
 UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 UIListLayout.Padding = UDim.new(0, 15)
+
+local dragging, dragInput, startPos, startInputPos
+
+ScrollingFrame.InputBegan:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+		dragging = true
+		startPos = ScrollingFrame.Position
+		startInputPos = input.Position
+
+		input.Changed:Connect(function()
+			if input.UserInputState == Enum.UserInputState.End then
+				dragging = false
+			end
+		end)
+	end
+end)
+
+ScrollingFrame.InputChanged:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+		dragInput = input
+	end
+end)
+
+userInput.InputChanged:Connect(function(input)
+	if input == dragInput and dragging then
+		local delta = input.Position - startInputPos
+		ScrollingFrame.Position = UDim2.new(
+			startPos.X.Scale, startPos.X.Offset + delta.X,
+			startPos.Y.Scale, startPos.Y.Offset + delta.Y
+		)
+	end
+end)
 
 function module:NewButton(name, callback)
 	local Button = Instance.new("TextButton", ScrollingFrame)
