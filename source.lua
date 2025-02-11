@@ -999,9 +999,9 @@ library.newtab = function(info)
 	text.Size = 12
 	text.Center = true
 	--
-	local textboundsx = text.TextBounds.x
-	local textboundsy = text.TextBounds.y
-	tabbutton.Size = udim2.snew(0,textboundsx+15,1,0,main[1].tabbar)
+	local textboundsx = text.TextBounds.x or 15
+	local textboundsy = text.TextBounds.y or 15
+	tabbutton.Size = udim2.snew(0,textboundsx+75,1,0,main[1].tabbar)
 	border.Size = udim2.snew(0,1,1,0,tabbutton)
 	tabbutton.Position = udim2.pnew(0,main.tabbuttonx,0,0,main[1].tabbar)
 	border.Position = udim2.pnew(1,0,0,0,tabbutton)
